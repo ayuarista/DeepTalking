@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./src/output.css">
-    <link rel="icon" href="./src/assets/logo.svg">
-</head>
-<body>
-
-
+    <link rel="stylesheet" href="./src/output.css" />
+    <link rel="icon" href="./src/assets/logo.svg" />
+  </head>
+  <body>
+    <!-- HEADER MD/SM -->
+    <header
+      class="w-full z-50 fixed block md:block lg:hidden xl:hidden bg-white"
+      x-data="{ showMenu: false }"
+    >
+      <div class="flex items-center justify-between mx-5">
+        <div class="flex items-center">
+          <button @click="showMenu = !showMenu">
+            <ion-icon
+              name="menu-outline"
+              class="text-black cursor-pointer text-3xl"
+            ></ion-icon>
+          </button>
+          <img src="./src/assets/logo.svg" alt="" class="w-14" />
+          <h1 class="font-bold text-lg text-teal-500">Deep-Talk</h1>
+        </div>
+      </div>
+      <div
+        x-show="showMenu"
+        class="fixed inset-0 w-[60%] bg-white z-50"
+        @click.away="showMenu = false"
+        x-transition:enter="transition-transform ease-out duration-300"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition-transform ease-in duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+      >
+        <div class="px-5 mt-8">
+          <button @click="showMenu = false" class="cursor-pointer">
+            <ion-icon name="close-outline" class="text-3xl"></ion-icon>
+          </button>
+        </div>
+        <div>
+          <nav>
+            <ul
+              class="flex flex-col items-start gap-5 mx-10 text-base font-medium py-5"
+            >
+              <li class="hover:underline"><a href="#about">About</a></li>
+              <li class="hover:underline"><a href="#service">Service</a></li>
+              <li class="hover:underline">
+                <a href="#portofolio">Portofolio</a>
+              </li>
+              <li class="hover:underline">
+                <a href="#testimonial">Testimonial</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- HEADER LG/XL -->
+    <header class="fixed z-50 w-full hidden md:hidden lg:block xl:block">
+      <div class="flex items-center justify-start p-2 bg-white w-full">
+        <div class="mx-10 flex items-center gap-1">
+          <img src="./src/assets/logo.svg" alt="" class="w-14" />
+          <h1 class="text-2xl font-bold text-teal-500">Deep-Talk</h1>
+        </div>
+        <nav>
+          <ul class="flex items-center gap-5 text-[15px] font-medium">
+            <li class="hover:underline"><a href="#about">About</a></li>
+            <li class="hover:underline"><a href="#service">Service</a></li>
+            <li class="hover:underline">
+              <a href="#portofolio">Portofolio</a>
+            </li>
+            <li class="hover:underline">
+              <a href="#testimonial">Testimonial</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <script src="/src/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
@@ -28,5 +98,5 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-</body>
+  </body>
 </html>
